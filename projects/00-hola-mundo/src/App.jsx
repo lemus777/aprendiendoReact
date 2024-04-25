@@ -1,17 +1,34 @@
+import './App.css'
+import { TwitterFollowCard } from './TwitterFollowCard'
+
+const users = [
+  {
+    userName: 'midudev',
+    name: 'Miguel Ángel Duran',
+    isFollowing: true
+  },
+  {
+    userName: 'pheralb',
+    name: 'Pablo Heraldo',
+    isFollowing: false
+  },
+  {
+    userName: 'vxnder',
+    name: 'Vanderhart',
+    isFollowing: false
+  }
+]
+
 export function App () {
   return (
-  <article>
-    <header>
-      <img alt='El avatar de midudev' src='https://unavatar.io/midudev' />
-      <div>
-        <strong>Miguel Ángel Durán</strong>
-        <span>@midudev</span>
-      </div>
-    </header>
-
-    <aside>
-      <button>Seguir</button>
-    </aside>
-  </article>
+    <div className='App'>
+      {
+        users.map(({ userName, name, isFollowing }) => (
+            <TwitterFollowCard key={userName} userName={userName} initialIsFollowing={isFollowing}>
+              {name}
+            </TwitterFollowCard>
+        ))
+      }
+    </div>
   )
 }
